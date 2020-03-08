@@ -11,3 +11,13 @@ bitcoin.createNewBlock(1234, 'dummyhash1', 'dummyhash2');
 
 console.log(bitcoin);
 console.log(bitcoin.getLastBlock()['transactions']);
+
+const hash = bitcoin.hashBlock('dummyhash1', bitcoin.getLastBlock()['transactions'], 1234);
+console.log(hash);
+
+const currentBlockData = bitcoin.getLastBlock()['transactions'];
+const nonce = bitcoin.proofOfWork('dummyhash1', currentBlockData);
+console.log(nonce);
+
+const powHash = bitcoin.hashBlock('dummyhash1', bitcoin.getLastBlock()['transactions'], nonce);
+console.log(powHash);
