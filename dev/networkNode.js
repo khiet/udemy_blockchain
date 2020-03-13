@@ -76,7 +76,7 @@ app.get('/mine', function (req, res) {
   // any data can fit in here, no idea why 'index' needs to be recorded
   const currentBlockData = {
     index: lastBlock['index'] + 1,
-    ...bitcoin.pendingTransactions
+    transactions: bitcoin.pendingTransactions
   };
   const nonce = bitcoin.proofOfWork(previousBlockHash, currentBlockData);
   const blockHash = bitcoin.hashBlock(previousBlockHash, currentBlockData, nonce)

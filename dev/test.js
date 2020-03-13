@@ -1,23 +1,8 @@
 const Bockchain = require('./blockchain');
 
 const bitcoin = new Bockchain();
-bitcoin.createNewTransaction(100, 'khiet', 'nami');
-bitcoin.createNewTransaction(200, 'khiet', 'keiko');
 
-// mining
-let nonce = bitcoin.proofOfWork(bitcoin.getLastBlock()['hash'], bitcoin.pendingTransactions);
-let hash = bitcoin.hashBlock(bitcoin.getLastBlock()['hash'], bitcoin.pendingTransactions, nonce)
-// add to blockchain
-bitcoin.createNewBlock(nonce, bitcoin.getLastBlock()['hash'], hash)
+const bc = {"chain":[{"index":1,"timestamp":1584124497520,"transactions":[],"nonce":100,"hash":"0","previousBlockHash":"0"},{"index":2,"timestamp":1584124500706,"transactions":[{"amount":100,"sender":"7fd063e0651a11ea82860fcd3429d301","recipient":"807cd080651a11ea82860fcd3429d301","transactionId":"589dc210655911ea8751adc99f232b3f"},{"amount":200,"sender":"807cd080651a11ea82860fcd3429d301","recipient":"90513e60651a11ea82860fcd3429d301","transactionId":"589f96d0655911eaa515e33e84141999"},{"amount":300,"sender":"7fd063e0651a11ea82860fcd3429d301","recipient":"90513e60651a11ea82860fcd3429d301","transactionId":"58a31940655911eaaab5a138666c2ff7"}],"nonce":9135,"hash":"0000490c9c4ffd4d16fc9021731fcb7c99393735578e04765f36658f97c15550","previousBlockHash":"0"},{"index":3,"timestamp":1584124502014,"transactions":[{"amount":12.5,"sender":"00","recipient":"5716ace0655911ea8751adc99f232b3f","transactionId":"58f44680655911ea8751adc99f232b3f"},{"amount":10,"sender":"7fd063e0651a11ea82860fcd3429d301","recipient":"807cd080651a11ea82860fcd3429d301","transactionId":"58f61b40655911ea8751adc99f232b3f"}],"nonce":87977,"hash":"0000f29d8b289fabbc5f66a2b63e414c96c6f217d8da15f62f424949ebc93766","previousBlockHash":"0000490c9c4ffd4d16fc9021731fcb7c99393735578e04765f36658f97c15550"},{"index":4,"timestamp":1584124502683,"transactions":[{"amount":12.5,"sender":"00","recipient":"570d3700655911eaa515e33e84141999","transactionId":"59bc2a60655911eaa515e33e84141999"},{"amount":20,"sender":"807cd080651a11ea82860fcd3429d301","recipient":"90513e60651a11ea82860fcd3429d301","transactionId":"59be4d40655911eab047615c102b3e1e"}],"nonce":19186,"hash":"00009f562bc047f8f1685fd38687502981ce18cf3c0753c8fa2d7f0112ada83a","previousBlockHash":"0000f29d8b289fabbc5f66a2b63e414c96c6f217d8da15f62f424949ebc93766"},{"index":5,"timestamp":1584124503281,"transactions":[{"amount":12.5,"sender":"00","recipient":"57082df0655911eaaab5a138666c2ff7","transactionId":"5a221820655911eaaab5a138666c2ff7"},{"amount":30,"sender":"d6531d00655811ea981a9114a6a1cc6c","recipient":"90513e60651a11ea82860fcd3429d301","transactionId":"5a2413f0655911eab047615c102b3e1e"}],"nonce":12286,"hash":"00000e84c26f62064666d98f1c263d43a9989bb4bbffea42fb442114903da4ed","previousBlockHash":"00009f562bc047f8f1685fd38687502981ce18cf3c0753c8fa2d7f0112ada83a"},{"index":6,"timestamp":1584124503926,"transactions":[{"amount":12.5,"sender":"00","recipient":"5709dba0655911eab9e835bd39bb13ed","transactionId":"5a7f0530655911eab9e835bd39bb13ed"},{"amount":40,"sender":"d6a386f0655811ea981a9114a6a1cc6c","recipient":"90513e60651a11ea82860fcd3429d301","transactionId":"5a823980655911eab047615c102b3e1e"}],"nonce":12971,"hash":"000083727f8c48dfe6e4e266a9ef693a2e584287448ec501fa49653f11077dbd","previousBlockHash":"00000e84c26f62064666d98f1c263d43a9989bb4bbffea42fb442114903da4ed"},{"index":7,"timestamp":1584124504010,"transactions":[{"amount":12.5,"sender":"00","recipient":"570a77e0655911eab047615c102b3e1e","transactionId":"5adfc2d0655911eab047615c102b3e1e"},{"amount":50,"sender":"d7ebbe60655811ea981a9114a6a1cc6c","recipient":"90513e60651a11ea82860fcd3429d301","transactionId":"5ae20cc0655911eab047615c102b3e1e"}],"nonce":5515,"hash":"00000f0f0d1967bc6675d55263006606d68b24423fef9a7f1ff0db242909266e","previousBlockHash":"000083727f8c48dfe6e4e266a9ef693a2e584287448ec501fa49653f11077dbd"}],"pendingTransactions":[{"amount":12.5,"sender":"00","recipient":"570a77e0655911eab047615c102b3e1e","transactionId":"5aec45f0655911eab047615c102b3e1e"}],"currentNodeUrl":"http://localhost:3002","networkNodes":["http://localhost:3001","http://localhost:3003","http://localhost:3004","http://localhost:3005"]};
 
-bitcoin.createNewTransaction(500, 'yoko', 'nami');
-bitcoin.createNewTransaction(900, 'nami', 'keiko');
-
-// mining
-nonce = bitcoin.proofOfWork(bitcoin.getLastBlock()['hash'], bitcoin.pendingTransactions);
-hash = bitcoin.hashBlock(bitcoin.getLastBlock()['hash'], bitcoin.pendingTransactions, nonce)
-// add to blockchain
-bitcoin.createNewBlock(nonce, bitcoin.getLastBlock()['hash'], hash)
-
-console.log(bitcoin);
-console.log(bitcoin.getLastBlock().transactions);
+const result = bitcoin.chainIsValid(bc.chain);
+console.log('chainIsValid: ', result);
