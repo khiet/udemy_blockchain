@@ -43,7 +43,7 @@ Blockchain.prototype.createNewTransaction = function (amount, sender, recipient)
   return newTransaction;
 }
 
-Blockchain.prototype.addTransactionToPendingTransactions = function(transaction) {
+Blockchain.prototype.addTransactionToPendingTransactions = function (transaction) {
   this.pendingTransactions.push(transaction);
 
   return this.getLastBlock()['index'] + 1;
@@ -65,15 +65,15 @@ Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData
   return nonce;
 }
 
-Blockchain.prototype.chainIsValid = function(blockchain) {
+Blockchain.prototype.chainIsValid = function (blockchain) {
   let validChain = true;
 
-  for(let i = 1; i < blockchain.length; i++) {
+  for (let i = 1; i < blockchain.length; i++) {
     const currentBlock = blockchain[i];
-    const previousBlock = blockchain[i-1];
+    const previousBlock = blockchain[i - 1];
     const blockHash = this.hashBlock(
       currentBlock.previousBlockHash,
-      { index: currentBlock.index, transactions: currentBlock.transactions },
+      {index: currentBlock.index, transactions: currentBlock.transactions},
       currentBlock.nonce
     );
 
