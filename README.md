@@ -2,10 +2,10 @@
 
 ### Summary of concepts
 
+* Create a network of *nodes* and use *broadcast* to synchronize the blockchain.
 * Create *transactions*.
 * Use *proof of work* to mine a new *block*.
 * View *blockchain* and *transaction*.
-* Create a network of *nodes* and use *broadcast* to synchronize the blockchain.
 * Use *consensus* with "Longest Chain Rule" to keep nodes up-to-date.
 
 ### How to run
