@@ -48,7 +48,7 @@ app.post('/transaction/broadcast', function (req, res) {
   });
 });
 
-app.post('/receive-newe-block', function (req, res) {
+app.post('/receive-new-block', function (req, res) {
   const newBlock = req.body.newBlock;
   const lastBlock = bitcoin.getLastBlock();
   const correctHash = lastBlock.hash === newBlock.previousBlockHash;
@@ -87,7 +87,7 @@ app.get('/mine', function (req, res) {
   const requestPromises = [];
   bitcoin.networkNodes.forEach(function (networkNodeUrl) {
     const requestOptions = {
-      uri: networkNodeUrl + '/receive-newe-block',
+      uri: networkNodeUrl + '/receive-new-block',
       method: 'POST',
       body: {newBlock: newBlock},
       json: true
